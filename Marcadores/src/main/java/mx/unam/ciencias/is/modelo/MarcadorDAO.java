@@ -100,8 +100,10 @@ public class MarcadorDAO {
         Transaction tx=null;
         try{
         tx=session.beginTransaction();
-        String hql= "FROM Marcador WHERE varLatitud = "+latitud+ "AND varLongitud = "+longitud;
+        String hql= "FROM Marcador WHERE varLatitud = :latitud AND varLongitud = :longitud";
         Query query =session.createQuery(hql);
+        query.setParameter("varLatitud",latitud);
+        query.setParameter("varLongitud",longitud);
         result=(Marcador)query.uniqueResult();
         tx.commit();
         }catch (Exception e){
@@ -113,7 +115,7 @@ public class MarcadorDAO {
                 }finally{
                         session.close();
                         }
-                return result;
+        return result;
     }
     
     /**
@@ -128,8 +130,9 @@ public class MarcadorDAO {
         Transaction tx=null;
         try{
         tx=session.beginTransaction();
-        String hql= "FROM Marcador WHERE idmarcador = " + id;
-        Query query =session.createQuery(hql);
+        String hql= "FROM Marcador WHERE idmarcador = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("idmarcador",id);
         result=(Marcador)query.uniqueResult();
         tx.commit();
         }catch (Exception e){

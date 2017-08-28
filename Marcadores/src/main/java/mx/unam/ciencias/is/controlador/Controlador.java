@@ -71,10 +71,10 @@ public class Controlador {
         Marcador ma = marcador_db.getMarcador(latitud, longitud);
         if(ma==null){
             Marcador m  = new Marcador();
-            m.setLatitud(latitud);
-            m.setLongitud(longitud);
-            m.setNombre(nombre);
-            m.setDescripcion(descripcion);
+            m.setVarLatitud(latitud);
+            m.setVarLongitud(longitud);
+            m.setVarNombre(nombre);
+            m.setVarDescripcion(descripcion);
             marcador_db.guardar(m);
         
         }
@@ -92,7 +92,6 @@ public class Controlador {
     @RequestMapping(value="/actualizaM", method = RequestMethod.GET)
     public ModelAndView actualizaM(ModelMap model,HttpServletRequest request){
         //Aqui va tu codigo
-    
     }
     
     
