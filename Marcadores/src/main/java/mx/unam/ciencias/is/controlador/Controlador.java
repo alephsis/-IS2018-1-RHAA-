@@ -73,7 +73,7 @@ public class Controlador {
             Marcador m  = new Marcador();
             m.setVarLatitud(latitud);
             m.setVarLongitud(longitud);
-            m.setVarNombre(nombre);
+            m.setVarNombreM(nombre);
             m.setVarDescripcion(descripcion);
             marcador_db.guardar(m);
         
@@ -92,17 +92,47 @@ public class Controlador {
     @RequestMapping(value="/actualizaM", method = RequestMethod.GET)
     public ModelAndView actualizaM(ModelMap model,HttpServletRequest request){
         //Aqui va tu codigo
+        Double latitud = Double.parseDouble(request.getParameter("latitud"));
+        Double longitud = Double.parseDouble(request.getParameter("longitud"));
+        Marcador m = marcador_db.getMarcador(latitud, longitud);
+        model.addAttribute("marcador", m);
+        return new ModelAndView("actualizaM",model);
     }
     
     
     @RequestMapping(value="/eliminaMarcador", method = RequestMethod.GET)
     public String eliminaMarcador(HttpServletRequest request){
         //Aqui va tu codigo
+        Double latitud = Double.parseDouble(request.getParameter("latitud"));
+        Double longitud = Double.parseDouble(request.getParameter("longitud"));
+        String nombre = request.getParameter("nombre");
+        String descripcion = request.getParameter("descripcion");
+        Marcador ma = marcador_db.getMarcador(latitud, longitud);
+        marcador_db.eliminar(ma);
+        return "redirect:/";
     }
     
     @RequestMapping(value= "/actualizar", method = RequestMethod.POST)
     public String actualizar(HttpServletRequest request){
-        //Aqui va tu codigo   
+        //Aqui va tu código
+        if(request.getParameter("latitud") != null
+                && request.getParameter("longitud") != null
+                && request.getParameter("nombre") != null
+                && request.getParameter("descripcion") != null){
+            Double latitud = Double.parseDouble(request.getParameter("latitud"));
+            Double longitud = Double.parseDouble(request.getParameter("longitud"));
+            String nombre = request.getParameter("nombre");
+            String descripcion = request.getParameter("descripcion");
+            Marcador ma = marcador_db.getMarcador(latitud, longitud);
+            if(ma!=null){
+                ma.setVarLatitud(latitud);
+                ma.setVarLongitud(longitud);
+                ma.setVarNombreM(nombre);
+                ma.setVarDescripcion(descripcion);
+                marcador_db.actualizar(ma);
+            }
+        }
+        return "redirect:/";  
     }
 }
 
