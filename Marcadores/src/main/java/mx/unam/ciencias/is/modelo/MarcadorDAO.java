@@ -101,7 +101,7 @@ public class MarcadorDAO {
         try{
         tx=session.beginTransaction();
         String hql= "FROM Marcador WHERE varLatitud = :latitud AND varLongitud = :longitud";
-        Query query =session.createQuery(hql);
+        Query query = session.createQuery(hql);
         query.setParameter("varLatitud",latitud);
         query.setParameter("varLongitud",longitud);
         result=(Marcador)query.uniqueResult();
