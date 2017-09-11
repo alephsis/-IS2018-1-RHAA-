@@ -115,15 +115,16 @@ public class Controlador {
     @RequestMapping(value= "/actualizar", method = RequestMethod.POST)
     public String actualizar(HttpServletRequest request){
         //Aqui va tu código
-        if(request.getParameter("latitud") != null
-                && request.getParameter("longitud") != null
-                && request.getParameter("nombre") != null
-                && request.getParameter("descripcion") != null){
+        if((request.getParameter("latitud") != null) && (request.getParameter("latitud") != "")
+                && (request.getParameter("longitud") != null) && (request.getParameter("longitud") != "")
+                && (request.getParameter("nombre") != null)
+                && (request.getParameter("descripcion") != null)){
             Double latitud = Double.parseDouble(request.getParameter("latitud"));
             Double longitud = Double.parseDouble(request.getParameter("longitud"));
+            int id = Integer.parseInt(request.getParameter("id"));
             String nombre = request.getParameter("nombre");
             String descripcion = request.getParameter("descripcion");
-            Marcador ma = marcador_db.getMarcador(latitud, longitud);
+            Marcador ma = marcador_db.getMarcadorId(id);
             if(ma!=null){
                 ma.setVarLatitud(latitud);
                 ma.setVarLongitud(longitud);
