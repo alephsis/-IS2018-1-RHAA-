@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author jonathan
  */
 @Controller 
-public class Controlador {
+public class ControladorMarcador {
     /*Injectamos el modelo del marcador */
     @Autowired
     MarcadorDAO marcador_db;
