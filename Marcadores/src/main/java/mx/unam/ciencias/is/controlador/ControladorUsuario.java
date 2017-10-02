@@ -42,4 +42,11 @@ public class ControladorUsuario {
         }
         return "redirect:/";
     }
+    
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public String marcadores(){
+        return "nuevoinicio";   
+    }
+    
+    
 }

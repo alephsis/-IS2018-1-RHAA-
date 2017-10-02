@@ -31,7 +31,7 @@ public class Usuario {
     @Column(name = "contrasena")
     private String varContrasena;
     @OneToMany(mappedBy="varUsuarioid")
-    private Set varMarcadores;
+    private Set<Marcador> varMarcadores;
     
 
     public int getVarIdusuario() {
