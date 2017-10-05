@@ -21,7 +21,12 @@
     <body>
         <div class="contenedor">
             <header>
-                
+                <form style="display:inline" action="/Marcadores/inicio"> 
+                    <button id="btnSes" class="btn btn-primary btn-lg" >Inicio</button>
+                </form>
+                <form style="display:inline" action="/Marcadores/"> 
+                    <button id="btnSes" class="btn btn-primary btn-lg" >Cerrar Sesión</button>
+                </form>     
             </header>
     
             <section class="main">

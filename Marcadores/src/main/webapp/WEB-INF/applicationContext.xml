@@ -24,7 +24,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>mx.unam.ciencias.is.mapeobd.Marcador</value>
-                <value>mx.unam.ciencias.i.mapeobd.Usuario</value>
+                <value>mx.unam.ciencias.is.mapeobd.Usuario</value>
             </list>
         </property>
         <property name="hibernateProperties">

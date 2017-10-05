@@ -20,11 +20,16 @@
         
         <div class="contenedor">
             <header>
-                <form action="/Marcadores/agregaMarcador"> 
+                <form action="/Marcadores/agregaMarcador" style="display:inline"> 
                     <button id="btnSes" class="btn btn-primary btn-lg" >Agrega un marcador</button>
                 </form>
+                <form style="display:inline"> 
+                    <button id="btnSes" class="btn btn-primary btn-lg" >Perfil</button>
+                </form>
+                <form action ="/Marcadores/" style="display:inline"> 
+                    <button id="btnSes" class="btn btn-primary btn-lg" >Cerrar Sesión</button>
+                </form>
             </header>
-    
             <section class="main">
                 <div id="mapa"></div>
             </section>
