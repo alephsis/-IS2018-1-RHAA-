@@ -44,9 +44,13 @@ public class ControladorUsuario {
     }
     
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String marcadores(){
+    public String nuevoinicio(){
         return "nuevoinicio";   
     }
     
+    @RequestMapping(value="/perfil", method = RequestMethod.GET)
+    public String perfil(){
+        return "perfil";   
+    }
     
 }
