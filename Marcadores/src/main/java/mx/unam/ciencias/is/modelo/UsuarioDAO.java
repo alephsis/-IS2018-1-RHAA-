@@ -128,7 +128,7 @@ public class UsuarioDAO {
         Transaction tx=null;
         try{
         tx=session.beginTransaction();
-        String hql= "FROM usuario WHERE varCorreo = :c";
+        String hql= "FROM Usuario WHERE varCorreo = :c";
         Query query = session.createQuery(hql);
         query.setParameter("c",correo);
         result=(Usuario)query.uniqueResult();

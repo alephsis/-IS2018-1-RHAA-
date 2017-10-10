@@ -20,7 +20,7 @@
         
         <div class="contenedor">
             <header>
-                <form action ="/Marcadores/" style="display:inline"> 
+                <form action ="/Marcadores/inicio" style="display:inline"> 
                     <button id="btnIni" class="btn btn-primary btn-lg" >Inicio</button>
                 </form>
                 <form action="/Marcadores/agregaMarcador" style="display:inline"> 
@@ -76,7 +76,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="http://www.placebear.com/300/210">
+                        <img src="http://www.fillmurray.com/300/210">
                     </div>
                     <div class="col-md-6">
                         <img src="http://www.placekitten.com/300/210">

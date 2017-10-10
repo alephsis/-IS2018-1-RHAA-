@@ -14,7 +14,9 @@ import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import mx.unam.ciencias.is.mapeobd.Marcador;
+import mx.unam.ciencias.is.mapeobd.Usuario;
 import mx.unam.ciencias.is.modelo.MarcadorDAO;
+import mx.unam.ciencias.is.modelo.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +33,8 @@ public class ControladorMarcador {
     /*Injectamos el modelo del marcador */
     @Autowired
     MarcadorDAO marcador_db;
+    @Autowired
+    UsuarioDAO usuario_db;
     
     /**
      * Regresa la pagina principal con los marcadores de la base de datos
@@ -69,16 +73,18 @@ public class ControladorMarcador {
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         Marcador ma = marcador_db.getMarcador(latitud, longitud);
+        Usuario usuario = usuario_db.getUsuario("alexis@example.com");
         if(ma==null){
             Marcador m  = new Marcador();
             m.setVarLatitud(latitud);
             m.setVarLongitud(longitud);
             m.setVarNombreM(nombre);
             m.setVarDescripcion(descripcion);
+            m.setVarUsuarioid(usuario);
             marcador_db.guardar(m);
         
         }
-        return "redirect:/";
+        return "redirect:/inicio";
     }
     
     
@@ -109,16 +115,22 @@ public class ControladorMarcador {
         String descripcion = request.getParameter("descripcion");
         Marcador ma = marcador_db.getMarcador(latitud, longitud);
         marcador_db.eliminar(ma);
-        return "redirect:/";
+        return "redirect:/inicio";
     }
     
     @RequestMapping(value= "/actualizar", method = RequestMethod.POST)
     public String actualizar(HttpServletRequest request){
         //Aqui va tu código
-        if((request.getParameter("latitud") != null) && (request.getParameter("latitud") != "")
-                && (request.getParameter("longitud") != null) && (request.getParameter("longitud") != "")
+        System.out.println("Anteeeeeeeeeeeeeeeeeeeees");
+        System.out.println(request.getParameter("latitud"));
+        System.out.println(request.getParameter("longitud"));
+        System.out.println(request.getParameter("nombre"));
+        System.out.println(request.getParameter("descripcion"));
+        if((request.getParameter("latitud") != null) && (!request.getParameter("latitud").equals(""))
+                && (request.getParameter("longitud") != null) && (!request.getParameter("longitud").equals(""))
                 && (request.getParameter("nombre") != null)
                 && (request.getParameter("descripcion") != null)){
+            System.out.println("Entré");
             Double latitud = Double.parseDouble(request.getParameter("latitud"));
             Double longitud = Double.parseDouble(request.getParameter("longitud"));
             int id = Integer.parseInt(request.getParameter("id"));
@@ -133,7 +145,7 @@ public class ControladorMarcador {
                 marcador_db.actualizar(ma);
             }
         }
-        return "redirect:/";  
+        return "redirect:/inicio";  
     }
 }
 
